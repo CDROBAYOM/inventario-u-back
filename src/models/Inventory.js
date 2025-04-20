@@ -18,7 +18,7 @@ const inventorySchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  estado: {
+  state: {
     type: Boolean,
     required: true
   }

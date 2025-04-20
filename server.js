@@ -2,7 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const inventoryRoutes = require('./routes/inventory');
+const inventoryRoutes = require('./src/routes/inventoryRouter');
+const orderRoutes = require('./src/routes/orderRouter');
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/inventory', inventoryRoutes);
+app.use('/api/orders', orderRoutes);
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/inventariou')
