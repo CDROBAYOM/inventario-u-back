@@ -11,6 +11,11 @@ const orderSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  deliveryStatus: {
+    type: String,
+    enum: ['PENDIENTE', 'EN_PROCESO', 'ENTREGADO', 'CANCELADO'],
+    default: 'PENDIENTE'
+  },
   items: [{
     id: {
       type: String,
