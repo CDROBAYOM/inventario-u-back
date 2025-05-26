@@ -1,10 +1,9 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const inventoryRoutes = require('./src/routes/inventoryRouter');
-const orderRoutes = require('./src/routes/orderRouter');
-
+const productoRoutes = require('./src/routes/productoRoutes');
+const pedidoRoutes = require('./src/routes/pedidoRoutes');
+const usuarioRoutes = require('./src/routes/usuarioRoutes');
 dotenv.config();
 
 const app = express();
@@ -13,14 +12,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
-app.use('/api/inventory', inventoryRoutes);
-app.use('/api/orders', orderRoutes);
-
-// MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/inventariou')
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+// API Routes
+app.use('/api/productos', productoRoutes);
+app.use('/api/pedidos', pedidoRoutes);
+app.use('/api/usuarios', usuarioRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
