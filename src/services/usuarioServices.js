@@ -114,33 +114,6 @@ class UsuarioServices {
         }
     }
 
-    static async findByEmail(email) {
-
-        console.log("Correo: " + email);
-        const params = {
-            TableName: 'usuarios',
-            IndexName: 'emailIndex',
-            KeyConditionExpression: 'email = :email',
-            ExpressionAttributeValues: {
-                ':email': email
-            }
-        };
-
-        try {
-            const command = new QueryCommand(params);
-            const result = await dynamoDB.send(command);
-            
-            if (!result.Items || result.Items.length === 0) {
-                return null;
-            }
-
-            return result.Items[0];
-        } catch (error) {
-            console.error("Error al buscar usuario por email:", error);
-            throw error;
-        }
-    }
-
 }
 
 module.exports = { UsuarioServices };
