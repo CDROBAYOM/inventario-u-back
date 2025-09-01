@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const productoRoutes = require('./src/routes/productoRoutes');
 const pedidoRoutes = require('./src/routes/pedidoRoutes');
 const usuarioRoutes = require('./src/routes/usuarioRoutes');
+const informeRoutes = require('./src/routes/informeRoutes');
 dotenv.config();
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/api/productos', productoRoutes);
 app.use('/api/pedidos', pedidoRoutes);
 app.use('/api/usuarios', usuarioRoutes);
+app.use('/api/informes', informeRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
